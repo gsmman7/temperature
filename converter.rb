@@ -8,45 +8,36 @@ def initialize (temperature)
 #  temperature = gets.to_i    #voor nadien nog een input te kunnen doorgeven
   @temperature = temperature
 end
-
+#read from file and convert
 def file
   afile = File.new("data.txt","r")
-  content = afile.sysread(6).to_f
-  @kelvin = content + 273
-  @fahrenheit = content * 1.8 + 32
+  @temperature = afile.sysread(6).to_f
+  @kelvin = temperature + 273
+  @fahrenheit = temperature * 1.8 + 32
   puts "It's currently #{kelvin} degrees kelvin & #{fahrenheit} degrees fahrenheit"
 end
-
+#standard conversion from command line
 def conversion_cmd
   @kelvin = temperature + 273
   puts "It's currently #{kelvin} degrees kelvin"
   @fahrenheit = temperature * 1.8 + 32
   puts "Its currently #{fahrenheit} degrees fahrenheit"
 end
-
-def give_txt
- File.write('./temp.txt', 'temperature: ')
-end
-
+#convert to json string
 def give_json
-
+ puts "{celsius: #{temperature},fahrenheit: #{fahrenheit}, kelvin: #{kelvin}}"
 end
-
+#convert to html code
 def give_html
-
+puts "<div>"
+puts "    <div>#{temperature}°C</div>"
+puts "    <div>#{fahrenheit}°F</div> "
+puts "    <div>#{kelvin}°K</div>"
+puts "</div>"
 end
-
-def read_html
-
+#read data from html
+def open(url)
+ Net::HTTP.get(URI.parse(url))
 end
-
-end
-
-if __FILE__ == $0
-  input = ARGV.first.to_f
-  temp = TemperatureConverter.new input
- temp.conversion_cmd
-#  temp.file
-#  temp.give_txt
 
 end
