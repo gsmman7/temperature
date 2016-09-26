@@ -14,14 +14,15 @@ def file
   @temperature = afile.sysread(6).to_f
   @kelvin = temperature + 273
   @fahrenheit = temperature * 1.8 + 32
-  puts "It's currently #{kelvin} degrees kelvin & #{fahrenheit} degrees fahrenheit"
+  puts "It's currently#{temperature}°C, #{kelvin} degrees kelvin & #{fahrenheit} degrees fahrenheit"
 end
 #standard conversion from command line
 def conversion_cmd
   @kelvin = temperature + 273
-  puts "It's currently #{kelvin} degrees kelvin"
+  puts "It's currently #{kelvin} °K"
   @fahrenheit = temperature * 1.8 + 32
-  puts "Its currently #{fahrenheit} degrees fahrenheit"
+  puts "Its currently #{fahrenheit} °F"
+  puts "Its currently #{temperature} °C"
 end
 #convert to json string
 def give_json
@@ -37,7 +38,14 @@ puts "</div>"
 end
 #read data from html
 def open(url)
- Net::HTTP.get(URI.parse(url))
+@temperature = Net::HTTP.get(URI.parse(url)).to_f
+@kelvin = temperature + 273
+@fahrenheit = temperature * 1.8 + 32
+puts "It's currently #{temperature}°C, #{kelvin}°K & #{fahrenheit}°F"
+end
+
+def method_name
+
 end
 
 end
