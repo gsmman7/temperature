@@ -12,8 +12,7 @@ end
 def file_temperature
   afile = File.new("data.txt","r")
   @temperature = afile.sysread(6).to_f
-  @kelvin = temperature + KELVIN
-  @fahrenheit = temperature * 1.8 + 32
+  commandline_temperature
 end
 def to_text
 puts "It's currently #{temperature}°C, #{kelvin} degrees kelvin & #{fahrenheit} degrees fahrenheit"
@@ -38,8 +37,6 @@ end
 #read data from html
 def url_temperature(url)
 @temperature = Net::HTTP.get(URI.parse(url)).to_f
-@kelvin = temperature + KELVIN
-@fahrenheit = temperature * 1.8 + 32
+commandline_temperature
 end
-
 end

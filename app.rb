@@ -4,6 +4,7 @@ require 'uri'
 
   input = ARGV.first.to_f
    temp = TemperatureConverter.new input
+  #text conversion
   temp.commandline_temperature
   temp.to_text
   temp.to_json
