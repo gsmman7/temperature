@@ -1,4 +1,5 @@
 class TemperatureConverter
+
 attr_accessor :temperature
 attr_accessor :fahrenheit
 attr_accessor :kelvin
