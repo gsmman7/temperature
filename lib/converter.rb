@@ -46,8 +46,6 @@
 # end
 # end
 
-
-
 #Celcius class
 class Celsius
 attr_reader :temperature
@@ -67,8 +65,26 @@ end
 def self.url_temperature(url)
   Net::HTTP.get(URI.parse(url)).to_f
 end
+
+
+def self.mqtt_temperature
+  client = MQTT::Client.connect(
+          :host => 'staging.thethingsnetwork.org',
+          :port => '1883',
+          :username => '70B3D57ED00012B2',
+          :password => 'c8iuTSccnypK1eoFzEb/OoqB2FVAiFg/aEaYesnNf4w='
+        ) do |c|
+          c.get('#') do |topic,message|
+            obj = JSON.parse("#{message}")
+            sv1 = obj['fields']['temperature']
+            count = 0
+            count = count + 1
+            dev_eui = obj['dev_eui']
+          end
+        end
 end
 
+end
 #fahrenheit class
 class Fahrenheit
   attr_reader :temp
