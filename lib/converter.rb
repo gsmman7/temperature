@@ -1,5 +1,4 @@
 
-
 #Celcius class
 class Celsius
 attr_reader :temperature
