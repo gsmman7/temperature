@@ -1,4 +1,7 @@
-require "./lib/converter.rb"
+#!usr/bin/env ruby
+
+#require "./lib/temperature_converter_nicovdb"
+require "./lib/converter."
 require 'net/http'
 require 'uri'
 require 'optparse'
