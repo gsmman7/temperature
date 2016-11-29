@@ -2,7 +2,8 @@ require "./lib/converter.rb"
 require 'net/http'
 require 'uri'
 require 'optparse'
-
+require 'mqtt'
+require 'json'
 #  input = ARGV.first.to_f
   # temp = TemperatureConverter.new input
 

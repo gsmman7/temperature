@@ -1,11 +1,17 @@
 
-#Celcius class
+#This is the class where all the temperature reading happens.
+#In  this class, there are 4 seperate ways to read the temperature
+#These are methods to read from the command line,a txt file, url and finally mqtt
 class Celsius
 attr_reader :temperature
 #init class method
 def initialize (temperature)
   @temperature = temperature
 end
+# Return the temperature value in degrees celsius
+    # @return [Number] temperature in degrees celsius
+    # @example
+    #   @newt = Celsius.new(t).normal
 def normal
 temperature
 end
@@ -18,6 +24,23 @@ end
 def self.url_temperature(url)
   Net::HTTP.get(URI.parse(url)).to_f
 end
+#reading from mqqt method
+def mqtt_temperature
+   MQTT::Client.connect(
+          :host => 'staging.thethingsnetwork.org',
+          :port => '1883',
+          :username => '70B3D57ED00012B2',
+          :password => 'c8iuTSccnypK1eoFzEb/OoqB2FVAiFg/aEaYesnNf4w='
+        ) do |c|
+          c.get(sensor_id) do |topic,message|
+        obj = JSON.parse("#{message}")
+        $temperature = obj['fields']['temperature']
+        #Only listen until temperature is printed once
+        break if message[0,1] != nil
+          end
+      end
+end
+
 end
 
 #fahrenheit class
@@ -55,7 +78,10 @@ def initialize (temp,fahr,kelv)
   @fahr = fahr
   @kelv = kelv
 end
-#print in regular text
+# Printing all converted values in normal text
+    # @return [String] temperature converted in plain text
+    # @example
+    # puts Screen.new(@newt,@newf,@newk).to_text
 def to_text
 puts "It's currently #{temp}°C, #{fahr} degrees kelvin & #{kelv} degrees fahrenheit"
 end
