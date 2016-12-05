@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "commandline application to convert temperatures from different sources, and output them in different ways"
   s.authors     = ["Nicolas Vandenbroucke"]
   s.email       = 'nicolas.vandenbroucke@vdb.be'
-  s.files       = ["lib/temperature_converter_nicovdb.rb"]
+  s.files       = Dir['lib/**/*.rb']
   s.homepage    =
     'https://github.com/gsmman7/temperature.git'
   s.license       = 'MIT'
