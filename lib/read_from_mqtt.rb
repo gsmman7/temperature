@@ -1,10 +1,10 @@
+require 'mqqt'
+require 'rubygems'
+require 'json'
 class Read_mqtt
 
   attr_reader :temperature
   #init class method
-  def initialize (temperature)
-    @temperature = temperature
-  end
 
   #reading from mqqt method
   def mqtt_temperature
@@ -18,9 +18,8 @@ class Read_mqtt
           obj = JSON.parse("#{message}")
           $temperature = obj['fields']['temperature']
           #Only listen until temperature is printed once
-          break if message[0,1] != nil
-            end
-        end
+          c.disconnect()
+          end
+      end
   end
-
 end

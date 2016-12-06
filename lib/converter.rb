@@ -1,3 +1,11 @@
+require "conv"
+require "read_from_cmd"
+require "read_from_file"
+require "read_from_html"
+require "read_from_mqtt"
+require "read_to_text"
+require "read_to_json"
+require "read_to_html"
 
 # #This is the class where all the temperature reading happens.
 # #In  this class, there are 4 seperate ways to read the temperature
@@ -99,21 +107,22 @@
 # end
 # end
 
+
 class Converter
 
 def to_text
 newtemp = Text.new
-puts newtemp.put_text
+newtemp.put_text
 end
 
 def to_json
 newtemp = Json.new
-puts newtemp.put_json
+newtemp.put_json
 end
 
 def to_html
 newtemp = Html.new
-puts newtemp.put_html
+newtemp.put_html
 end
 
 def cmd
@@ -126,9 +135,9 @@ newtemp = Read_file.new
 newtemp.file_temperature
 end
 
-def url_temperature
+def url_temperature url
 newtemp = Read_url.new
-newtemp.url_temperature
+newtemp.url_temperature(url)
 end
 
 

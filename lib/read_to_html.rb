@@ -1,4 +1,4 @@
-
+require "conv"
 class Html
 
   attr_reader :temperature

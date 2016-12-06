@@ -1,4 +1,5 @@
-
+require 'json'
+require "conv"
 class Json
   attr_reader :temperature
   #initialize method

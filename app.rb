@@ -1,11 +1,8 @@
-require "./lib/converter.rb"
-require 'net/http'
-require 'uri'
+require "./lib/converter"
 require 'optparse'
-require 'mqtt'
-require 'json'
 #  input = ARGV.first.to_f
-  # temp = TemperatureConverter.new input
+
+   temp = Converter.new
 
 # #cmd
 # temp.to_text
@@ -26,31 +23,38 @@ OptionParser.new do |opts|
   opts.banner = "Usage: ruby app.rb [options]"
 
   opts.on("-t [FLOAT]","--temperature [FLOAT]",Float,"Give number to convert") do |t|
-    @newt = Celsius.new(t).normal
-    @newf = Fahrenheit.new(@newt).ctof
-    @newk = Kelvin.new(@newt).ctok
+    # @newt = Celsius.new(t).normal
+    # @newf = Fahrenheit.new(@newt).ctof
+    # @newk = Kelvin.new(@newt).ctok
+    temp.cmd
+
   end
   opts.on("-f","--file","convert from file") do |f|
-    @newt =Celsius.file_temperature
-    @newf = Fahrenheit.new(@newt).ctof
-    @newk = Kelvin.new(@newt).ctok
+    # @newt =Celsius.file_temperature
+    # @newf = Fahrenheit.new(@newt).ctof
+    # @newk = Kelvin.new(@newt).ctok
+     temp.file_temperature
 
   end
   opts.on("-u","--url","convert from url") do |u|
-    @newt =Celsius.url_temperature ("http://labict.be/software-engineering/temperature/api/temperature/fake")
-    @newf = Fahrenheit.new(@newt).ctof
-    @newk = Kelvin.new(@newt).ctok
+    # @newt =Celsius.url_temperature ("http://labict.be/software-engineering/temperature/api/temperature/fake")
+    # @newf = Fahrenheit.new(@newt).ctof
+    # @newk = Kelvin.new(@newt).ctok
+     temp.url_temperature('http://labict.be/software-engineering/temperature/api/temperature/fake')
   end
 
   opts.on("-c","--cmd","give output in plain text") do |c|
-  puts Screen.new(@newt,@newf,@newk).to_text
+  # puts Screen.new(@newt,@newf,@newk).to_text
+  puts temp.to_text
   end
 
   opts.on("-j","--json","give output in JSON string") do |j|
-  puts Screen.new(@newt,@newf,@newk).to_json
+  # puts Screen.new(@newt,@newf,@newk).to_json
+  puts temp.to_json
   end
 
   opts.on("-h","--html","give output in html format") do |h|
-  puts Screen.new(@newt,@newf,@newk).to_html
+  # puts Screen.new(@newt,@newf,@newk).to_html
+  puts temp.to_html
   end
 end.parse!
