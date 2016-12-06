@@ -1,5 +1,5 @@
 require 'json'
-require "conv"
+require "./lib/conv"
 class Json
   attr_reader :temperature
   #initialize method

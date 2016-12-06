@@ -1,11 +1,3 @@
-require "conv"
-require "read_from_cmd"
-require "read_from_file"
-require "read_from_html"
-require "read_from_mqtt"
-require "read_to_text"
-require "read_to_json"
-require "read_to_html"
 
 # #This is the class where all the temperature reading happens.
 # #In  this class, there are 4 seperate ways to read the temperature
@@ -107,6 +99,13 @@ require "read_to_html"
 # end
 # end
 
+require "./lib/conv"
+require "./lib/read_from_cmd"
+require "./lib/read_from_file"
+require "./lib/read_from_url"
+require "./lib/read_to_text"
+require "./lib/read_to_json"
+require "./lib/read_to_html"
 
 class Converter
 

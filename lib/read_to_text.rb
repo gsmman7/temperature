@@ -1,5 +1,5 @@
 
-require "conv"
+require "./lib/conv"
 
 class Text
 attr_reader :temperature
