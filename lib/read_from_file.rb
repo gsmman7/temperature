@@ -1,14 +1,14 @@
 class Read_file
 attr_reader :temperature
   #init class method
-  def initialize (temperature)
-    @temperature = temperature
+  def initialize
+    $temperature
   end
-  
+
 #file reading method
-  def self.file_temperature
+  def file_temperature
     afile = File.new("data.txt","r")
-    afile.sysread(6).to_f
+    $temperature = afile.sysread(6).to_f
   end
 
 end

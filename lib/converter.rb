@@ -109,6 +109,8 @@ require "./lib/read_to_html"
 
 class Converter
 
+
+
 def to_text
 newtemp = Text.new
 newtemp.put_text
@@ -124,8 +126,8 @@ newtemp = Html.new
 newtemp.put_html
 end
 
-def cmd
-newtemp = Rcmd.new
+def cmd temperature
+newtemp = Rcmd.new temperature
 newtemp.normal
 end
 

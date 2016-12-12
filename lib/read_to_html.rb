@@ -5,11 +5,14 @@ class Html
   #initialize method
 
 def put_html
-  tmp = Conv.new
+  tmp = Convert.new
+  var1 = tmp.normal
+  var2 = tmp.ctof
+  var3 = tmp.ctok
 puts "<div>"
-puts "    <div>"+ tmp.normal + "°C</div>"
-puts "    <div>"+ tmp.ctof +"°F</div> "
-puts "    <div>"+ tmp.ctok +"°K</div>"
+puts "    <div>#{var1}°C</div>"
+puts "    <div> #{var2}°F</div> "
+puts "    <div> #{var3}°K</div>"
 puts "</div>"
 end
 

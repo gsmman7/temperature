@@ -5,8 +5,11 @@ class Json
   #initialize method
 
 def put_json
-  tmp = Conv.new
- puts "{celsius: " + tmp.normal.to_s +",fahrenheit: "+tmp.ctof.to_s+", kelvin: "+tmp.ctof.to_s+"}"
+  tmp = Convert.new
+  var1 = tmp.normal
+  var2 = tmp.ctof
+  var3 = tmp.ctok
+ puts "{celsius:#{var1} ,fahrenheit:#{var2} , kelvin:#{var3} }"
 end
 
 end

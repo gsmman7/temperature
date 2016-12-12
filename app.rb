@@ -26,7 +26,7 @@ OptionParser.new do |opts|
     # @newt = Celsius.new(t).normal
     # @newf = Fahrenheit.new(@newt).ctof
     # @newk = Kelvin.new(@newt).ctok
-    temp.cmd
+    temp.cmd t
 
   end
   opts.on("-f","--file","convert from file") do |f|
