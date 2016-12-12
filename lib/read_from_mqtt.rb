@@ -7,7 +7,7 @@ class Read_mqtt
   #init class method
 
   #reading from mqqt method
-  def mqtt_temperature
+  def mqtt
      MQTT::Client.connect(
             :host => 'staging.thethingsnetwork.org',
             :port => '1883',

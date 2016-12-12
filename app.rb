@@ -57,4 +57,10 @@ OptionParser.new do |opts|
   # puts Screen.new(@newt,@newf,@newk).to_html
   puts temp.to_html
   end
+
+  opts.on("-m","--mqtt","read input from mqtt") do |m|
+  # puts Screen.new(@newt,@newf,@newk).to_html
+  temp.mqtt_temperature
+  end
+
 end.parse!
